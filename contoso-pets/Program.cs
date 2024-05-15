@@ -24,7 +24,6 @@ namespace contoso_pets
       // array used to store runtime data, there is no persisted data
       string[,] ourAnimals = new string[maxPets, 6];
 
-      // TODO: Convert the if-elseif-else construct to a switch statement
 
       // create some initial ourAnimals array entries
       for (int i = 0; i < maxPets; i++)
@@ -122,7 +121,14 @@ namespace contoso_pets
 
           case "1":
             // List all of our current pet information
-            Console.WriteLine("this app feature is coming soon - please check back to see progress.");
+            for (int i = 0; i < maxPets; i++)
+            {
+              if (ourAnimals[i, 0] != "ID #: ")
+              {
+                Console.WriteLine(ourAnimals[i, 0]);
+              }
+            }
+
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
