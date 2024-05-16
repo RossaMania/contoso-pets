@@ -149,23 +149,48 @@ namespace contoso_pets
             for (int i = 0; i < maxPets; i++)
             {
               if (ourAnimals[i, 0] != "ID #: ")
-                {
-                  petCount += 1;
-                }
+              {
+                petCount += 1;
+              }
             }
 
             if (petCount < maxPets)
             {
               Console.WriteLine($"We currently have {petCount} pets that need homes. We can manage {(maxPets - petCount)} more.");
             }
-            else
+
+            while (anotherPet == "y" && petCount < maxPets)
             {
-              Console.WriteLine("We are at capacity and cannot accept any more pets at this time.");
-              break;
+              // increment petCount (the array is zero-based, so we increment the counter after adding to the array)
+              petCount = petCount + 1;
+
+              // check maxPet limit
+              if (petCount < maxPets)
+              {
+                // another pet?
+                Console.WriteLine("Do you want to enter info for another pet (y/n)");
+
+                do
+                {
+                  readResult = Console.ReadLine();
+                  if (readResult != null)
+                  {
+                    anotherPet = readResult.ToLower();
+                  }
+
+                } while (anotherPet != "y" && anotherPet != "n");
+
+              }
+
             }
 
+            if (petCount >= maxPets)
+            {
+            Console.WriteLine("We have reached our limit on the number of pets that we can manage.");
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
+            }
+
             break;
 
           case "3":
