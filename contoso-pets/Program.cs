@@ -163,7 +163,7 @@ namespace contoso_pets
             {
               bool validEntry = false;
 
-              // get species (cat or dog) - string animalSpecies is a required field 
+              // get species (cat or dog) - string animalSpecies is a required field
               do
               {
                 Console.WriteLine("\n\rEnter 'dog' or 'cat' to begin a new entry");
@@ -306,9 +306,38 @@ namespace contoso_pets
 
           case "3":
             // Ensure animal ages and physical descriptions are complete
-            Console.WriteLine(
-                "Challenge Project - please check back soon to see progress."
-            );
+            for (int i = 0; i < maxPets; i++)
+            {
+              if (ourAnimals[i, 0] != "ID #: ")
+              {
+                if (ourAnimals[i, 2] == "Age: ?")
+                {
+                  Console.WriteLine(
+                      $"Please enter an age for {ourAnimals[i, 3].Substring(10)} (ID: {ourAnimals[i, 0].Substring(5)})."
+                  );
+                   readResult = Console.ReadLine();
+                  if (readResult != null)
+                  {
+                    ourAnimals[i, 2] = "Age: " + readResult;
+                  }
+                }
+
+                if (ourAnimals[i, 4] == "Physical description: tbd" || ourAnimals[i, 4] == "Physical description: ")
+                {
+                  Console.WriteLine(
+                      $"Please enter a physical description for {ourAnimals[i, 3].Substring(10)} (ID: {ourAnimals[i, 0].Substring(5)})."
+                  );
+                  readResult = Console.ReadLine();
+                  if (readResult != null)
+                  {
+                    ourAnimals[i, 4] = "Physical description: " + readResult;
+                  }
+                }
+              }
+            }
+            // Console.WriteLine(
+            //     "Challenge Project - please check back soon to see progress."
+            // );
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
