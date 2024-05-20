@@ -335,9 +335,7 @@ namespace contoso_pets
                 }
               }
             }
-            // Console.WriteLine(
-            //     "Challenge Project - please check back soon to see progress."
-            // );
+
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
