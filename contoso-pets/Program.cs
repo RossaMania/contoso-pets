@@ -313,7 +313,7 @@ namespace contoso_pets
                 if (ourAnimals[i, 2] == "Age: ?")
                 {
                   Console.WriteLine(
-                      $"Please enter an age for {ourAnimals[i, 3].Substring(10)} ID: {ourAnimals[i, 0].Substring(5)}."
+                      $"Please enter an age for ID #: {ourAnimals[i, 0].Substring(5)}."
                   );
                    readResult = Console.ReadLine();
                   if (readResult != null)
@@ -325,7 +325,7 @@ namespace contoso_pets
                 if (ourAnimals[i, 4] == "Physical description: tbd" || ourAnimals[i, 4] == "Physical description: ")
                 {
                   Console.WriteLine(
-                      $"Please enter a physical description for {ourAnimals[i, 3].Substring(10)} ID: {ourAnimals[i, 0].Substring(5)}."
+                      $"Please enter a physical description for ID #: {ourAnimals[i, 0].Substring(5)}."
                   );
                   readResult = Console.ReadLine();
                   if (readResult != null)
