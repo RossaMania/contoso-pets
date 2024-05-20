@@ -306,28 +306,35 @@ namespace contoso_pets
 
           case "3":
             // Ensure animal ages and physical descriptions are complete
+            // Loop through all animals
             for (int i = 0; i < maxPets; i++)
             {
+              // Check if the animal has a valid ID
               if (ourAnimals[i, 0] != "ID #: ")
               {
+                // If the age of the animal is unknown, prompt the user to enter it
                 if (ourAnimals[i, 2] == "Age: ?")
                 {
                   Console.WriteLine(
                       $"Please enter an age for ID #: {ourAnimals[i, 0].Substring(5)}."
                   );
                    readResult = Console.ReadLine();
+                   // If the user entered something, update the age of the animal
                   if (readResult != null)
                   {
                     ourAnimals[i, 2] = "Age: " + readResult;
                   }
                 }
 
+                // If the physical description of the animal is unknown or to be determined, prompt user to enter it
                 if (ourAnimals[i, 4] == "Physical description: tbd" || ourAnimals[i, 4] == "Physical description: ")
                 {
                   Console.WriteLine(
                       $"Please enter a physical description for ID #: {ourAnimals[i, 0].Substring(5)}."
                   );
                   readResult = Console.ReadLine();
+
+                  // If the user entered something, update the physical description of the animal
                   if (readResult != null)
                   {
                     ourAnimals[i, 4] = "Physical description: " + readResult;
@@ -337,6 +344,7 @@ namespace contoso_pets
             }
 
             Console.WriteLine("Age and physical description fields are complete for all of our friends!");
+            // Wait for the user to press Enter
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
