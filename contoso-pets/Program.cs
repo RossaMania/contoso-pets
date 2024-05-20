@@ -315,22 +315,30 @@ namespace contoso_pets
                 // If the age of the animal is unknown, prompt the user to enter it
                 if (ourAnimals[i, 2] == "Age: ?")
                 {
-                  Console.WriteLine(
-                      $"Please enter an age for ID #: {ourAnimals[i, 0].Substring(5)}."
-                  );
-                   readResult = Console.ReadLine();
-                   // If the user entered something, update the age of the animal
-                  if (readResult != null)
-                  {
-                    ourAnimals[i, 2] = "Age: " + readResult;
-                  }
+                 bool validAgeEntered = false;
+                while (!validAgeEntered)
+                {
+                    Console.WriteLine($"Please enter an age for ID #: {ourAnimals[i, 0].Substring(6)}");
+                    readResult = Console.ReadLine();
+
+                    // If the user entered a number, update the age of the animal
+                    if (readResult != null && int.TryParse(readResult, out int age))
+                    {
+                        ourAnimals[i, 2] = "Age: " + age.ToString();
+                        validAgeEntered = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid age entered. Please enter a valid number.");
+                    }
+                }
                 }
 
                 // If the physical description of the animal is unknown or to be determined, prompt user to enter it
                 if (ourAnimals[i, 4] == "Physical description: tbd" || ourAnimals[i, 4] == "Physical description: ")
                 {
                   Console.WriteLine(
-                      $"Please enter a physical description for ID #: {ourAnimals[i, 0].Substring(5)}."
+                      $"Please enter a physical description for ID #: {ourAnimals[i, 0].Substring(6)} (size, color, breed, gender, weight, housebroken)"
                   );
                   readResult = Console.ReadLine();
 
