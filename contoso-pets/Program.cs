@@ -171,16 +171,16 @@ namespace contoso_pets
 
                 if (readResult != null)
                 {
-                    animalSpecies = readResult.ToLower();
+                  animalSpecies = readResult.ToLower();
                 }
 
                 if (animalSpecies != "dog" && animalSpecies != "cat")
                 {
-                    validEntry = false;
+                  validEntry = false;
                 }
                 else
                 {
-                    validEntry = true;
+                  validEntry = true;
                 }
 
               } while (validEntry == false);
@@ -199,15 +199,15 @@ namespace contoso_pets
                 if (readResult != null)
                 {
 
-                    animalAge = readResult;
-                    if (animalAge != "?")
-                    {
-                        validEntry = int.TryParse(animalAge, out petAge);
-                    }
-                    else
-                    {
-                        validEntry = true;
-                    }
+                  animalAge = readResult;
+                  if (animalAge != "?")
+                  {
+                    validEntry = int.TryParse(animalAge, out petAge);
+                  }
+                  else
+                  {
+                    validEntry = true;
+                  }
 
                 }
 
@@ -221,11 +221,11 @@ namespace contoso_pets
 
                 if (readResult != null)
                 {
-                    animalPhysicalDescription = readResult.ToLower();
-                    if (animalPhysicalDescription == "")
-                    {
-                        animalPhysicalDescription = "tbd";
-                    }
+                  animalPhysicalDescription = readResult.ToLower();
+                  if (animalPhysicalDescription == "")
+                  {
+                    animalPhysicalDescription = "tbd";
+                  }
 
                 }
 
@@ -239,11 +239,11 @@ namespace contoso_pets
 
                 if (readResult != null)
                 {
-                    animalPersonalityDescription = readResult.ToLower();
-                    if (animalPersonalityDescription == "")
-                    {
-                        animalPersonalityDescription = "tbd";
-                    }
+                  animalPersonalityDescription = readResult.ToLower();
+                  if (animalPersonalityDescription == "")
+                  {
+                    animalPersonalityDescription = "tbd";
+                  }
 
                 }
               } while (animalPersonalityDescription == "");
@@ -255,11 +255,11 @@ namespace contoso_pets
                 readResult = Console.ReadLine();
                 if (readResult != null)
                 {
-                    animalNickname = readResult.ToLower();
-                    if (animalNickname == "")
-                    {
-                        animalNickname = "tbd";
-                    }
+                  animalNickname = readResult.ToLower();
+                  if (animalNickname == "")
+                  {
+                    animalNickname = "tbd";
+                  }
                 }
               } while (animalNickname == "");
 
@@ -297,9 +297,9 @@ namespace contoso_pets
 
             if (petCount >= maxPets)
             {
-            Console.WriteLine("We have reached our limit on the number of pets that we can manage.");
-            Console.WriteLine("Press the Enter key to continue.");
-            readResult = Console.ReadLine();
+              Console.WriteLine("We have reached our limit on the number of pets that we can manage.");
+              Console.WriteLine("Press the Enter key to continue.");
+              readResult = Console.ReadLine();
             }
 
             break;
@@ -315,33 +315,36 @@ namespace contoso_pets
                 // If the age of the animal is unknown, prompt the user to enter it
                 if (ourAnimals[i, 2] == "Age: ?")
                 {
-                 bool validAgeEntered = false;
-                while (!validAgeEntered)
-                {
+                  bool validAgeEntered = false;
+                  while (!validAgeEntered)
+                  {
                     Console.WriteLine($"Please enter an age for ID #: {ourAnimals[i, 0].Substring(6)}");
                     readResult = Console.ReadLine();
 
                     // If the user entered a number, update the age of the animal
                     if (readResult != null && int.TryParse(readResult, out int age))
                     {
-                        ourAnimals[i, 2] = "Age: " + age.ToString();
-                        validAgeEntered = true;
+                      ourAnimals[i, 2] = "Age: " + age.ToString();
+                      validAgeEntered = true;
                     }
+                  }
                 }
-              }
 
                 // If the physical description of the animal is unknown or to be determined, prompt user to enter it
                 if (ourAnimals[i, 4] == "Physical description: tbd" || ourAnimals[i, 4] == "Physical description: ")
                 {
-                  Console.WriteLine(
-                      $"Please enter a physical description for ID #: {ourAnimals[i, 0].Substring(6)} (size, color, breed, gender, weight, housebroken)"
-                  );
-                  readResult = Console.ReadLine();
-
-                  // If the user entered something, update the physical description of the animal
-                  if (readResult != null)
+                  bool validDescriptionEntered = false;
+                  while (!validDescriptionEntered)
                   {
-                    ourAnimals[i, 4] = "Physical description: " + readResult;
+                    Console.WriteLine($"Please enter a physical description for ID #: {ourAnimals[i, 0].Substring(6)} (size, color, breed, gender, weight, housebroken)");
+                    readResult = Console.ReadLine();
+
+                    // If the user entered something, update the physical description of the animal
+                    if (readResult != null && readResult.Length > 0)
+                    {
+                      ourAnimals[i, 4] = "Physical description: " + readResult;
+                      validDescriptionEntered = true;
+                    }
                   }
                 }
               }
@@ -355,9 +358,51 @@ namespace contoso_pets
 
           case "4":
             // Ensure animal nicknames and personality descriptions are complete
-            Console.WriteLine(
-                "Challenge Project - please check back soon to see progress."
-            );
+            // Console.WriteLine(
+            //     "Challenge Project - please check back soon to see progress."
+            // );
+                        for (int i = 0; i < maxPets; i++)
+            {
+              // Check if the animal has a valid ID
+              if (ourAnimals[i, 0] != "ID #: ")
+              {
+                // If the nickname of the animal is unknown, prompt the user to enter it
+                if (ourAnimals[i, 3] == "Nickname: tbd" || ourAnimals[i, 3] == "Nickname: ")
+                {
+                  bool validNicknameEntered = false;
+                  while (!validNicknameEntered)
+                  {
+                    Console.WriteLine($"Please enter a nickname for ID #: {ourAnimals[i, 0].Substring(6)}");
+                    readResult = Console.ReadLine();
+
+                    // If the user entered a nickname, update the nickname of the animal
+                    if (readResult != null && readResult.Length > 0)
+                    {
+                      ourAnimals[i, 3] = "Nickname: " + readResult;
+                      validNicknameEntered = true;
+                    }
+                  }
+                }
+
+                // If the personality description of the animal is unknown or to be determined, prompt user to enter it
+                if (ourAnimals[i, 5] == "Personality: tbd" || ourAnimals[i, 5] == "Personality: ")
+                {
+                  bool validDescriptionEntered = false;
+                  while (!validDescriptionEntered)
+                  {
+                    Console.WriteLine($"Please enter a personality description for ID #: {ourAnimals[i, 0].Substring(6)} (likes or dislikes, tricks, energy level)");
+                    readResult = Console.ReadLine();
+
+                    // If the user entered something, update the personality description of the animal
+                    if (readResult != null && readResult.Length > 0)
+                    {
+                      ourAnimals[i, 5] = "Personality: " + readResult;
+                      validDescriptionEntered = true;
+                    }
+                  }
+                }
+              }
+            }
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
