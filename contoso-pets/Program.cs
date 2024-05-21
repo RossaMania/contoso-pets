@@ -400,6 +400,9 @@ namespace contoso_pets
                 }
               }
             }
+
+            Console.WriteLine("Nickname and personality description fields are complete for all of our friends!");
+            // Wait for the user to press Enter
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
