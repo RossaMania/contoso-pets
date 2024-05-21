@@ -358,10 +358,7 @@ namespace contoso_pets
 
           case "4":
             // Ensure animal nicknames and personality descriptions are complete
-            // Console.WriteLine(
-            //     "Challenge Project - please check back soon to see progress."
-            // );
-                        for (int i = 0; i < maxPets; i++)
+            for (int i = 0; i < maxPets; i++)
             {
               // Check if the animal has a valid ID
               if (ourAnimals[i, 0] != "ID #: ")
