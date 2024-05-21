@@ -327,12 +327,8 @@ namespace contoso_pets
                         ourAnimals[i, 2] = "Age: " + age.ToString();
                         validAgeEntered = true;
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid age entered. Please enter a valid number.");
-                    }
                 }
-                }
+              }
 
                 // If the physical description of the animal is unknown or to be determined, prompt user to enter it
                 if (ourAnimals[i, 4] == "Physical description: tbd" || ourAnimals[i, 4] == "Physical description: ")
