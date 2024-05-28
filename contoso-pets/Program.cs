@@ -13,6 +13,7 @@ namespace contoso_pets
       string animalPhysicalDescription = "";
       string animalPersonalityDescription = "";
       string animalNickname = "";
+      string suggestedDonation = "";
 
       // variables that support data entry
       int maxPets = 8;
@@ -20,7 +21,7 @@ namespace contoso_pets
       string menuSelection = "";
 
       // array used to store runtime data, there is no persisted data
-      string[,] ourAnimals = new string[maxPets, 6];
+      string[,] ourAnimals = new string[maxPets, 7];
 
       // create some initial ourAnimals array entries
       for (int i = 0; i < maxPets; i++)
@@ -36,6 +37,7 @@ namespace contoso_pets
             animalPersonalityDescription =
                 "loves to have her belly rubbed and likes to chase her tail. gives lots of kisses.";
             animalNickname = "lola";
+            suggestedDonation = "85.00";
             break;
 
           case 1:
@@ -47,6 +49,7 @@ namespace contoso_pets
             animalPersonalityDescription =
                 "loves to have his ears rubbed when he greets you at the door, or at any time! loves to lean-in and give doggy hugs.";
             animalNickname = "loki";
+            suggestedDonation = "49.99";
             break;
 
           case 2:
@@ -57,6 +60,7 @@ namespace contoso_pets
                 "small white female weighing about 8 pounds. litter box trained.";
             animalPersonalityDescription = "friendly";
             animalNickname = "Puss";
+            suggestedDonation = "40.00";
             break;
 
           case 3:
@@ -66,6 +70,7 @@ namespace contoso_pets
             animalPhysicalDescription = "";
             animalPersonalityDescription = "";
             animalNickname = "";
+            suggestedDonation = "";
             break;
 
           default:
@@ -75,6 +80,7 @@ namespace contoso_pets
             animalPhysicalDescription = "";
             animalPersonalityDescription = "";
             animalNickname = "";
+            suggestedDonation = "";
             break;
         }
 
@@ -84,6 +90,7 @@ namespace contoso_pets
         ourAnimals[i, 3] = "Nickname: " + animalNickname;
         ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
         ourAnimals[i, 5] = "Personality: " + animalPersonalityDescription;
+        ourAnimals[i, 6] = "Suggested Donation: "  + suggestedDonation;
       }
 
       do
@@ -91,9 +98,7 @@ namespace contoso_pets
         // display the top-level menu options
         Console.Clear();
 
-        Console.WriteLine(
-            "Welcome to the Contoso PetFriends app. Your main menu options are:"
-        );
+        Console.WriteLine("Welcome to the Contoso PetFriends app. Your main menu options are:");
         Console.WriteLine(" 1. List all of our current pet information");
         Console.WriteLine(" 2. Add a new animal friend to the ourAnimals array");
         Console.WriteLine(" 3. Ensure animal ages and physical descriptions are complete");
