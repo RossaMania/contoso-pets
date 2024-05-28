@@ -446,6 +446,8 @@ namespace contoso_pets
 
           case "8":
             // Display all dogs with a specified characteristic
+            bool noMatchesDog = true;
+
             string dogCharacteristic = "";
 
             while (dogCharacteristic == "")
@@ -458,6 +460,30 @@ namespace contoso_pets
                 dogCharacteristic = readResult.ToLower().Trim();
               }
             } // end while
+
+            // loop through the ourAnimals array to find dogs with the specified characteristic
+            string dogDescription = "";
+
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 1].Contains("dog"))
+                {
+                    // Search combined descriptions and report results
+                    dogDescription = ourAnimals[i, 4] + "\n" + ourAnimals[i, 5];
+                    if (dogDescription.Contains(dogCharacteristic))
+                    {
+                        Console.WriteLine($"\nOur dog {ourAnimals[i, 3]} is a match!");
+                        Console.WriteLine(dogDescription);
+                        noMatchesDog = false;
+                    }
+                }
+            }
+
+            if (noMatchesDog)
+            {
+                Console.WriteLine("None of our dogs are a match found for: " + dogCharacteristic);
+            }
+
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
