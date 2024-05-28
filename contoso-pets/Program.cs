@@ -19,6 +19,7 @@ namespace contoso_pets
       int maxPets = 8;
       string? readResult;
       string menuSelection = "";
+      decimal decimalDonation = 0.00m;
 
       // array used to store runtime data, there is no persisted data
       string[,] ourAnimals = new string[maxPets, 7];
@@ -90,7 +91,10 @@ namespace contoso_pets
         ourAnimals[i, 3] = "Nickname: " + animalNickname;
         ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
         ourAnimals[i, 5] = "Personality: " + animalPersonalityDescription;
-        ourAnimals[i, 6] = "Suggested Donation: "  + suggestedDonation;
+        if (!decimal.TryParse(suggestedDonation, out decimalDonation)){
+        decimalDonation = 45.00m; // if suggestedDonation NOT a number, default to 45.00
+          }
+        ourAnimals[i, 6] = $"Suggested Donation: {decimalDonation:C2}";
       }
 
       do
